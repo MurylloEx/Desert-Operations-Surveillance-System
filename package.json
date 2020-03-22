@@ -1,0 +1,35 @@
+{
+  "name": "operations-surveillance",
+  "version": "1.0.0",
+  "description": "Surveillance system to Desert Operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MurylloEx/Desert-Operations-Surveillance-System.git"
+  },
+  "keywords": [
+    "surveillance",
+    "desert-operations",
+    "bot"
+  ],
+  "author": "Muryllo e Luiz Gustavo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MurylloEx/Desert-Operations-Surveillance-System/issues"
+  },
+  "homepage": "https://github.com/MurylloEx/Desert-Operations-Surveillance-System#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "faker": "^4.1.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.2",
+    "serve-index": "^1.9.1"
+  }
+}
