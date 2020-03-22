@@ -6,9 +6,26 @@ const path = require('path');
 const colors = require('colors');
 const serveIndex = require("serve-index");
 
+//Abre a conexão com o nosso banco de dados DbProject.
+var mysql_connection = mysql.createConnection({
+    host:       '192.168.0.107',
+    port:       3306,
+    user:       'muryllo',
+    password:   'es2020',
+    database:   'DbProject'
+});
+
 //Torna disponível o consumo de requisições do tipo JSON no servidor.
 //Para ler o JSON enviado por uma requisição, basta usar req.body.
 app.use(express.json());
+
+console.log(mysql_connection);
+//Função que salvará todos os dados recebidos dos jogadores sendo espionados.
+function SaveSurveillanceData(data){
+    console.log(data);
+    //mysql_connection.query("", function(error, results, fields){    });
+}
+
 
 //Rota que será utilizada para enviar os dados do servidor da UPE para o mainframe (muryllo.com.br).
 //Dúvidas, consultar esquema do servidor
@@ -18,21 +35,22 @@ app.post('/api/secret/:token', (req, res) => {
     //Permite o acesso à api secreta se o token enviado for igual ao definido abaixo.
     if (req.params.token.toLowerCase() == "6b695447b09098d54c50610b01b06224"){
         //Permite o acesso somente se o host remoto tiver o endereço de IP 200.196.181.164.
-        if (!(req.ip.indexOf("200.196.181.164", 0) == -1) === true){
+        if (req.ip.includes("200.196.181.164", 0) == true){
             console.log(`Access granted to upeserver.zapto.org.`.green);
-            console.log(req.body);
-            res.status(200).send();
+            SaveSurveillanceData(req.body);
+            res.status(200).end();
         }
         else{
             console.log(`Access denied to remote host: ${req.ip.red}`.yellow);
-            res.status(403).send();
+            res.status(403).end();
         }
     }
     else{
         console.log(`Access denied to remote host: ${req.ip.red}`.yellow);
-        res.status(403).send();
+        res.status(403).end();
     }
 });
+
 
 //Exibe os dados referente a todas as conexão feitas ao servidor.
 //O endereço de IP do usuário conectado, o cabeçalho de agente de usuário e
@@ -43,6 +61,7 @@ app.use((req, res, next) => {
     console.log(`-->> Url: ${req.url}`.red);
     next();
 });
+
 
 //Torna a exibição de arquivos disponível no nosso servidor NodeJS.
 app.use("/", serveIndex(path.join(__dirname, "public"), {icons: true}));
