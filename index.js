@@ -6,7 +6,11 @@ const path = require('path');
 const colors = require('colors');
 const serveIndex = require("serve-index");
 
-app.use((req, res, next)=>{
+app.use(express.json());
+app.use("/", serveIndex(path.join(__dirname, "public"), {icons: true}));
+app.use("/", express.static(path.join(__dirname, "public")));
+
+app.use((req, res, next) => {
     console.log("-->> -----");
     console.log("-->> -----");
     console.log("-->> ------");
@@ -14,9 +18,9 @@ app.use((req, res, next)=>{
     next();
 });
 
-
-app.use("/", serveIndex(path.join(__dirname, "public"), {icons: true}));
-app.use("/", express.static(path.join(__dirname, "public")));
+app.post('/api/secret', (req, res) => {
+    console.log(req.body)
+});
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
