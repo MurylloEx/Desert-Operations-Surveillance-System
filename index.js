@@ -1,14 +1,14 @@
 // Importações 
 const express = require("express");
-const mysql = require("mysql");
+const mariadb = require("mariadb");
 const app = express();
 const path = require('path');
 const colors = require('colors');
 const serveIndex = require("serve-index");
 
 //Abre a conexão com o nosso banco de dados DbProject.
-var mysql_connection = mysql.createConnection({
-    host:       '192.168.0.107',
+var mariadb_pool = mariadb.createPool({
+    host:       'localhost',
     port:       3306,
     user:       'muryllo',
     password:   'es2020',
@@ -19,7 +19,10 @@ var mysql_connection = mysql.createConnection({
 //Para ler o JSON enviado por uma requisição, basta usar req.body.
 app.use(express.json());
 
-console.log(mysql_connection);
+mariadb_pool.getConnection().then(value => {
+    console.log(value);
+});
+
 //Função que salvará todos os dados recebidos dos jogadores sendo espionados.
 function SaveSurveillanceData(data){
     console.log(data);
