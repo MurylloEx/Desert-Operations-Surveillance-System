@@ -1,32 +1,45 @@
 // Importações 
-const express = require("express");
-const mariadb = require("mariadb");
-const app = express();
-const path = require('path');
-const colors = require('colors');
-const serveIndex = require("serve-index");
+const express = require("express");         //Biblioteca do express para criar o servidor http.
+const mariadb = require("mariadb");         //Conector do MariaDB.
+const path = require('path');               //Biblioteca utilizada para realizar concateção de diretórios, etc.
+const colors = require('colors');           //Biblioteca utilizada para colorir as saídas do console.log().
+const serveIndex = require("serve-index");  //Biblioteca utilizada para exibir os arquivos do servidor.
 
-//Abre a conexão com o nosso banco de dados DbProject.
+//Cria uma instância do Express.
+const app = express();
+
+//Cria um pool de conexões com o nosso banco de dados DbProject.
 var mariadb_pool = mariadb.createPool({
-    host:       'localhost',
-    port:       3306,
-    user:       'muryllo',
-    password:   'es2020',
-    database:   'DbProject'
+    host:       'localhost',    //Endereço de IP do banco de dados (nesse caso localhost).
+    port:       3306,           //Porta do banco de dados (padrão é 3306 para MySql e MariaDB).
+    user:       'muryllo',      //Nome do usuário de banco de dados.
+    password:   '',             //Senha do usuário de banco de dados.
+    database:   'DbProject',    //Nome do banco de dados.
+    connectionLimit: 16         //Número máximo de conexões simultâneas ao banco de dados.
 });
+
 
 //Torna disponível o consumo de requisições do tipo JSON no servidor.
 //Para ler o JSON enviado por uma requisição, basta usar req.body.
 app.use(express.json());
 
-mariadb_pool.getConnection().then(value => {
-    console.log(value);
-});
 
 //Função que salvará todos os dados recebidos dos jogadores sendo espionados.
 function SaveSurveillanceData(data){
-    console.log(data);
-    //mysql_connection.query("", function(error, results, fields){    });
+    //Abre a conexão com o banco de dados.
+    let OnConnect = function(dbConn){
+        //Objeto da conexão de banco de dados.
+        console.log(dbConn);
+
+        //Dados recebidos do servidor upeserver.zapto.org
+        console.log(data);
+    }
+    let OnError = function(dbError){
+        //Imprime o erro caso não consiga conectar ao banco de dados.
+        console.log(dbError);
+    }
+    //Obtém uma nova conexão de forma assíncrona.
+    mariadb_pool.getConnection().then(OnConnect).catch(OnError);
 }
 
 
@@ -40,16 +53,21 @@ app.post('/api/secret/:token', (req, res) => {
         //Permite o acesso somente se o host remoto tiver o endereço de IP 200.196.181.164.
         if (req.ip.includes("200.196.181.164", 0) == true){
             console.log(`Access granted to upeserver.zapto.org.`.green);
+            //SaveSurveillanceData é a função que armazena os dados recebidos de upeserver.zapto.org
+            //no nosso banco de dados.
             SaveSurveillanceData(req.body);
+            //Retorna status 200 que significa OK!
             res.status(200).end();
         }
         else{
             console.log(`Access denied to remote host: ${req.ip.red}`.yellow);
+            //Retorna o statuys 403 que significa Forbidden ou Proibido.
             res.status(403).end();
         }
     }
     else{
         console.log(`Access denied to remote host: ${req.ip.red}`.yellow);
+        //Retorna o statuys 403 que significa Forbidden ou Proibido.
         res.status(403).end();
     }
 });
