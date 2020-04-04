@@ -4,18 +4,19 @@ const mariadb = require("mariadb");         //Conector do MariaDB.
 const path = require('path');               //Biblioteca utilizada para realizar concateção de diretórios, etc.
 const colors = require('colors');           //Biblioteca utilizada para colorir as saídas do console.log().
 const serveIndex = require("serve-index");  //Biblioteca utilizada para exibir os arquivos do servidor.
+const bodyParser = require('body-parser');
 
 //Cria uma instância do Express.
 const app = express();
 
 //Cria um pool de conexões com o nosso banco de dados DbProject.
 var mariadb_pool = mariadb.createPool({
-    host:       'localhost',    //Endereço de IP do banco de dados (nesse caso localhost).
-    port:       3306,           //Porta do banco de dados (padrão é 3306 para MySql e MariaDB).
-    user:       'muryllo',      //Nome do usuário de banco de dados.
-    password:   '',             //Senha do usuário de banco de dados.
-    database:   'DbProject',    //Nome do banco de dados.
-    connectionLimit: 16         //Número máximo de conexões simultâneas ao banco de dados.
+     host:       'localhost',    //Endereço de IP do banco de dados (nesse caso localhost).
+     port:       3306,           //Porta do banco de dados (padrão é 3306 para MySql e MariaDB).
+     user:       'muryllo',      //Nome do usuário de banco de dados.
+     password:   '',       //Senha do usuário de banco de dados.
+     database:   'DbProject',    //Nome do banco de dados.
+     connectionLimit: 16         //Número máximo de conexões simultâneas ao banco de dados.
 });
 
 
@@ -56,6 +57,7 @@ app.post('/api/secret/:token', (req, res) => {
             //SaveSurveillanceData é a função que armazena os dados recebidos de upeserver.zapto.org
             //no nosso banco de dados.
             SaveSurveillanceData(req.body);
+            console.log(req.body)
             //Retorna status 200 que significa OK!
             res.status(200).end();
         }
