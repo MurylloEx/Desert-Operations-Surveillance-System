@@ -34,6 +34,9 @@ function SaveSurveillanceData(data){
 
         //Dados recebidos do servidor upeserver.zapto.org
         console.log(data);
+
+        //Fecha a conexão com o banco de dados.
+        dbConn.end();
     }
     let OnError = function(dbError){
         //Imprime o erro caso não consiga conectar ao banco de dados.
