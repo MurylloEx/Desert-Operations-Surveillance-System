@@ -43,6 +43,12 @@
             .form-control {
                 border-radius: 10px;
             }
+            @media only screen and (max-width: 592px) {
+                 #img-card{
+                    padding: 0 20px;
+                    
+                    }
+                }
         </style>
 </head>
 
@@ -137,15 +143,15 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row ">
-                    <div class="col col-sm-2 col-md-2 col-lg"></div>
-                    <div class="col align-content-center col-sm-8 col-md-8 col-lg">
+                    <div class="col"></div>
+                    <div class="col">
                         
                             <div class="card border-radius-15 bg-transparent md-width rounded" >
                                 
                                 <div class="card-body bg-transparent text-light border-radius-10" >
                                     <div class="row">
                                         <div class="col"></div>
-                                        <div class="col"><img src="../../assets/images/logo-100.png"/></div>
+                                        <div class="col" id="img-card"><img src="../../assets/images/logo-100.png"/></div>
                                         <div class="col"></div>
                                         
                                     </div>
@@ -172,7 +178,7 @@
                         </form>
                         
                     </div>
-                    <div class="col col-sm-2 col-md-2 col-lg"></div>
+                    <div class="col"></div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
