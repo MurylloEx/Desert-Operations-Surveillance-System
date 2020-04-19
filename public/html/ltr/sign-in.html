@@ -13,6 +13,8 @@
     <title>Página de Login</title>
     <!-- Custom CSS -->
     <link href="../../dist/css/style.min.css" rel="stylesheet">
+    <!--Login stuffs-->
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -21,8 +23,8 @@
 <![endif]-->
         <style>
             body{
-                background-image: url(https://images.clipartlogo.com/files/istock/previews/1009/100962279-army-camouflage-pattern-khaki-color-vector-illustration.jpg);
-                background-color: #9e815e;
+                background-image: url(https://image.freepik.com/fotos-gratis/close-up-da-superficie-uniforme-militar-textura-de-tecido-close-up-coloracao-militar_130265-1710.jpg);
+                background-color: #868283;
             }
             /* link que ainda não foi visitado */
             a:link {
@@ -37,6 +39,9 @@
             /* link selecionado */
             a:active {
                 color: #a18070;
+            }
+            .form-control {
+                border-radius: 15px;
             }
         </style>
 </head>
@@ -125,54 +130,40 @@
         </header>
        
         <div class="justify-content-md-center">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row align-items-center">
-                    <div class="col-5">
-                        <h4 class="page-title text-light">Login</h4>
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item text-light font-size-40"><a href="#">Home</a></li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="col-7">
-                       
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
+            <div class="container-fluid mt-5">
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
+                <div class="row ">
+                    <div class="col col-sm-2 col-md-2 col-lg"></div>
+                    <div class="col align-content-center col-sm-8 col-md-8 col-lg">
                         
-                            <div class="card" style="-webkit-box-shadow: 2px 3px 3px rgba(110, 110, 110, 0.70);-moz-box-shadow:2px 3px 3px rgba(110, 110, 110, 0.70);box-shadow:2px 3px 3px rgba(110, 110, 110, 0.70);">
-
-                                <div class="card-body">
+                            <div class="card border-0 border-radius-15 bg-transparent md-width rounded" >
+                                
+                                <div class="card-body bg-transparent text-light border-0" >
+                                    <div class="row">
+                                        <div class="col"></div>
+                                        <div class="col ml-2"><img src="../../assets/images/logo-100.png"/></div>
+                                        <div class="col"></div>
+                                        
+                                    </div>
+                                        
+                                    
+                                    <div class="card-title text-center text-light mt-3" ">Login</div>
                                     <form action="">
                                          <!--input email-->
-                                        <div class="form-group">
+                                        <div class="form-group text-light " >
                                             <label>Digite seu e-mail</label>
-                                            <input type="text" name="email" class="form-control ">
+                                            <input type="text" name="email" class="form-control text-dark bg-white" >
                                         </div>
                                          <!--end input password-->
                                         
                                         <!--input password-->
                                         <div class="form-group">
                                             <label for="">Digite sua senha</label>
-                                            <input type="password" name="senha-usuario" class="form-control">
+                                            <input type="password" name="senha-usuario" class="form-control text-dark bg-white border">
                                         </div>
                                          <!--end input password-->
                                         
@@ -188,7 +179,7 @@
                                            
 
                                         <!--Button of submit login-->
-                                        <input type="submit" value="Enviar" class="btn btn-outline-secondary btn-block">
+                                        <input type="submit" value="Enviar" class="btn btn-white btn-rounded btn-block">
                                         <!--End Button of submit login-->
                                     </form>
                                     
@@ -197,6 +188,7 @@
                         </form>
                         
                     </div>
+                    <div class="col col-sm-2 col-md-2 col-lg"></div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->

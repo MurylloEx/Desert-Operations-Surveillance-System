@@ -10,9 +10,11 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/logo-cutout.png">
-    <title>Página de Cadastro</title>
+    <title>Página de Login</title>
     <!-- Custom CSS -->
     <link href="../../dist/css/style.min.css" rel="stylesheet">
+    <!--Login stuffs-->
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -21,8 +23,8 @@
 <![endif]-->
         <style>
             body{
-                background-image: url(https://images.clipartlogo.com/files/istock/previews/1009/100962279-army-camouflage-pattern-khaki-color-vector-illustration.jpg);
-                background-color: #9e815e;
+                background-image: url(https://image.freepik.com/fotos-gratis/close-up-da-superficie-uniforme-militar-textura-de-tecido-close-up-coloracao-militar_130265-1710.jpg);
+                background-color: #868283;
             }
             /* link que ainda não foi visitado */
             a:link {
@@ -37,6 +39,9 @@
             /* link selecionado */
             a:active {
                 color: #a18070;
+            }
+            .form-control {
+                border-radius: 10px;
             }
         </style>
 </head>
@@ -58,9 +63,9 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar" data-navbarbg="skin5">
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                <div class="navbar-header" data-logobg="skin5" style="background-color: #2b241c;">
+        <header class="topbar" data-navbarbg="skin5" >
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark" >
+                <div class="navbar-header" data-logobg="skin5" style="background-color: #2b241c;" >
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
@@ -68,12 +73,14 @@
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Light Logo icon -->
                             <img src="../../assets/images/logo-cutout.png" width="50px" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
-                            
+                             <!-- dark Logo text -->
+                             
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -85,7 +92,7 @@
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style="background-color: #2b241c;">
+                <div class="navbar-collapse collapse" id="" data-navbarbg="skin5" style="background-color: #2b241c;">
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
@@ -107,6 +114,7 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
+                            <!--<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>-->
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
@@ -122,67 +130,53 @@
         </header>
        
         <div class="justify-content-md-center">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row align-items-center">
-                    <div class="col-5">
-                        <h4 class="page-title text-light">Cadastro</h4>
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item text-light font-size-40"><a href="#">Home</a></li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="col-7">
-                        
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
+            <div class="container-fluid mt-5">
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
+                <div class="row ">
+                    <div class="col col-sm-2 col-md-2 col-lg"></div>
+                    <div class="col align-content-center col-sm-8 col-md-8 col-lg">
                         
-                            <div class="card" style="-webkit-box-shadow: 2px 3px 3px rgba(110, 110, 110, 0.70);-moz-box-shadow:2px 3px 3px rgba(110, 110, 110, 0.70);box-shadow:2px 3px 3px rgba(110, 110, 110, 0.70);">
-                            
-                                <div class="card-body">
+                            <div class="card border-radius-15 bg-transparent md-width rounded" >
+                                
+                                <div class="card-body bg-transparent text-light border-radius-10" >
+                                    <div class="row">
+                                        <div class="col"></div>
+                                        <div class="col ml-2"><img src="../../assets/images/logo-100.png"/></div>
+                                        <div class="col"></div>
+                                        
+                                    </div>
+                                        
+                                    
+                                    <div class="card-title text-center text-light mt-3" >Cadastro</div>
                                     <form action="">
                                         <div class="form-group">
                                             <label>Digite seu e-mail</label>
-                                            <input type="text" name="email" class="form-control">
+                                            <input type="text" name="email" class="form-control bg-white text-dark">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Digite seu nome de usuário</label>
-                                            <input type="text" name="nome-usuario" class="form-control">
+                                            <input type="text" name="nome-usuario" class="form-control bg-white text-dark" >
                                         </div>
                                         <div class="form-group">
                                             <label for="">Digite sua senha</label>
-                                            <input type="password" name="senha-usuario" class="form-control">
+                                            <input type="password" name="senha-usuario" class="form-control bg-white text-dark">
                                         </div>
                                         <div class="form-group">
                                             <label > Digite sua senha novamente, por favor</label>
-                                            <input type="password" name="confirmar-senha-usuario" class="form-control">
+                                            <input type="password" name="confirmar-senha-usuario" class="form-control bg-white text-dark">
                                         </div>
-                                        <input type="submit" value="Enviar" class="btn btn-outline-secondary btn-block">
-                                    </form>
-                                    
+                                        <input type="submit" value="Enviar" class="btn btn-white btn-rounded btn-block">
+                                    </form>                                 
                                 </div>
                             </div>
                         </form>
                         
                     </div>
+                    <div class="col col-sm-2 col-md-2 col-lg"></div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
