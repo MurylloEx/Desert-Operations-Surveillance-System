@@ -43,9 +43,20 @@
             .form-control {
                 border-radius: 10px;
             }
-            @media only screen and (max-width: 592px) {
+            /* Doing ajustments to the image in the center of the container*/
+            #img-card{
+                    padding-left: 150px;
+                    
+                 }
+            @media only screen and (max-width: 751px) {
                  #img-card{
-                    padding: 0 20px;
+                    padding: 0 80px;
+                    
+                    }
+                }
+                @media only screen and (max-width: 989px) {
+                 #img-card{
+                    padding-left: 90px;
                     
                     }
                 }
@@ -142,21 +153,21 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row ">
-                    <div class="col"></div>
-                    <div class="col">
-                        
+                <div class="container">
+                            <!--Begin of the Card-->
                             <div class="card border-radius-15 bg-transparent md-width rounded" >
                                 
+                                <!--Body of the card-->
                                 <div class="card-body bg-transparent text-light border-radius-10" >
+                                    
+                                    <!--Center image-->
                                     <div class="row">
                                         <div class="col"></div>
                                         <div class="col" id="img-card"><img src="../../assets/images/logo-100.png"/></div>
                                         <div class="col"></div>
-                                        
                                     </div>
-                                        
-                                    
+                                    <!-- end of Center image-->
+
                                     <div class="card-title text-center text-light mt-3 font-weight-bold" >Cadastro</div>
                                     <form action="">
                                         <div class="form-group font-weight-bold">
@@ -174,11 +185,15 @@
                                         <input type="submit" value="Enviar" class="btn btn-white btn-rounded btn-block font-weight-bold">
                                     </form>                                 
                                 </div>
+                                <!--end of Body of the card-->
+
                             </div>
-                        </form>
+                            <!--End of the Card-->
+                            
                         
-                    </div>
-                    <div class="col"></div>
+                    
+                    
+
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
