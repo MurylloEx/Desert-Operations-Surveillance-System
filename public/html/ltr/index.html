@@ -13,8 +13,24 @@
     <title>Página inicial</title>
     <!-- Custom CSS -->
     <link href="../../dist/css/style.min.css" rel="stylesheet">
-    <!--Login stuffs-->
+    <!--Material google icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- All Scripts thats gonna be loaded after with the property 'defer' -->
+    <!-- ============================================================== -->
+    <script src="../../assets/libs/jquery/dist/jquery.min.js" defer></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../../assets/libs/popper.js/dist/umd/popper.min.js" defer></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../../dist/js/app-style-switcher.js" defer></script>
+    <!--Wave Effects -->
+    <script src="../../dist/js/waves.js" defer></script>
+    <!--Menu sidebar -->
+    <script src="../../dist/js/sidebarmenu.js" defer></script>
+    <!--Custom JavaScript -->
+    <script src="../../dist/js/custom.js" defer></script>
     
+    <!--Login stuffs-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,12 +39,9 @@
 <![endif]-->
         <style>
             body{
-                background-image: url(../../assets/images/logo-cutout.png);
-                background-color: #a18070;
-                background-repeat: round;
-                background
+                background-image: linear-gradient(#868283, #a08262, #c4b79d);
             }
-            /* link que ainda não foi visitado */
+            /* link don't visited */
             a:link {
             color: white;
             }
@@ -38,7 +51,7 @@
                 color: #763a1c;
             }
 
-            /* link selecionado */
+            /* link selected */
             a:active {
                 color: #a18070;
             }
@@ -47,21 +60,16 @@
             }
             /* Doing ajustments to the image in the center of the container*/
             #img-card{
-                    padding-left: 150px;
-                    
-                 }
-            @media only screen and (max-width: 751px) {
-                 #img-card{
-                    padding: 0 80px;
-                    
-                    }
-                }
-                @media only screen and (max-width: 989px) {
-                 #img-card{
-                    padding-left: 90px;
-                    
-                    }
-                }
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+            }
+            /* Ajusting the material icons*/
+            .material-icons {
+                margin-right: 3px;
+                display: flex;
+                align-items:center;
+            }
         </style>
 </head>
 
@@ -156,14 +164,20 @@
                                 
                                 <!--Body of the card-->
                                     <div class="card-body bg-transparent text-light border-radius-10" >
-                                        A
-                                       
+                                        
                                         <div class="card-title text-center text-orange mt-3 font-weight-bold" >
                                             <h1 class="display-5">Digite o nome do usuário alvo das suas espionagens</h1> 
                                         </div>
                                         <form action="">
-                                            <div class="form-group font-weight-bold">
-                                                <input type="text" name="email" placeholder="Digite o nome do usuário alvo das suas espionagens" class="form-control bg-white text-dark font-weight-bold p-3">
+                                            <div class="input-group font-weight-bold">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group" >
+                                                        <span class="material-icons">
+                                                            search
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                                <input type="text" name="search" placeholder="Digite o nome do usuário alvo das suas espionagens" class="form-control bg-white text-dark font-weight-bold p-3 m-3">
                                             </div>
                                         </form>                                 
                                     </div>
@@ -210,19 +224,6 @@
     <!-- End Wrapper -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../dist/js/app-style-switcher.js"></script>
-    <!--Wave Effects -->
-    <script src="../../dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="../../dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="../../dist/js/custom.js"></script>
 </body>
 
 </html>

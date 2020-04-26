@@ -13,8 +13,22 @@
     <title>Página de Login</title>
     <!-- Custom CSS -->
     <link href="../../dist/css/style.min.css" rel="stylesheet">
-    <!--Login stuffs-->
+
+    <!-- All Scripts thats gonna be loaded after with the property 'defer' -->
+    <!-- ============================================================== -->
+    <script src="../../assets/libs/jquery/dist/jquery.min.js" defer></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../../assets/libs/popper.js/dist/umd/popper.min.js" defer></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../../dist/js/app-style-switcher.js" defer></script>
+    <!--Wave Effects -->
+    <script src="../../dist/js/waves.js" defer></script>
+    <!--Menu sidebar -->
+    <script src="../../dist/js/sidebarmenu.js" defer></script>
+    <!--Custom JavaScript -->
+    <script src="../../dist/js/custom.js" defer></script>
     
+    <!--Login stuffs-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,10 +37,9 @@
 <![endif]-->
         <style>
             body{
-                background-image: url(https://image.freepik.com/fotos-gratis/close-up-da-superficie-uniforme-militar-textura-de-tecido-close-up-coloracao-militar_130265-1710.jpg);
-                background-color: #868283;
+                background-image: linear-gradient(#868283, #a08262, #c4b79d);
             }
-            /* link que ainda não foi visitado */
+            /* link don't visited */
             a:link {
             color: white;
             }
@@ -36,32 +49,19 @@
                 color: #763a1c;
             }
 
-            /* link selecionado */
+            /* link selected */
             a:active {
                 color: #a18070;
             }
             .form-control {
                 border-radius: 15px;
             }
+            /* Doing ajustments to the image in the center of the container*/
             #img-card{
-                    padding-left: 150px;
-                    
-                 }
-            @media only screen and (max-width: 751px) {
-                 #img-card{
-                    padding: 0 80px;
-                    
-                    }
-                }
-                @media only screen and (max-width: 989px) {
-                 #img-card{
-                    padding-left: 90px;
-                    
-                    }
-                }
-
-
-
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;        
+            }
         </style>
 </head>
 
@@ -164,9 +164,7 @@
                                 <div class="card-body bg-transparent text-light border-0" >
                                     <!--Begin of Center image-->
                                         <div class="row">
-                                            <div class="col"></div>
-                                            <div class="col " id="img-card"><img src="../../assets/images/logo-100.png"/></div>
-                                            <div class="col "></div>
+                                            <div id="img-card"><img src="../../assets/images/logo-100.png"/></div>
                                         </div>
                                     <!--End of Center image-->
                                     <div class="card-title text-center text-light mt-3 font-weight-bold" ">Login</div>
@@ -238,19 +236,7 @@
     <!-- End Wrapper -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../dist/js/app-style-switcher.js"></script>
-    <!--Wave Effects -->
-    <script src="../../dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="../../dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="../../dist/js/custom.js"></script>
+    
 </body>
 
 </html>
