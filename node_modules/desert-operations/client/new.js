@@ -9,30 +9,35 @@ class DesertPlayer {
   }
 
   async load(profileUrl) {
-    let result = await requests.GET(this.Player.ProfileUrl || profileUrl, {
-      'Cookie': this.Session.UserCookies,
-      'User-Agent': this.Session.UserAgent
-    });
-    if (!result.success)
-      throw new Error('Failed to get user data.');
-    this.Player = result.data;
-    this.parser = $.load(result.data);
-    let UserInfoItems = this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item");
-    let HasOldNames = $(UserInfoItems[1]).hasClass('indent');
-    let IdxIncOffset = 0;
-    if (HasOldNames){
-      IdxIncOffset++;
-      for (let k = 1; k < UserInfoItems.length; k++){
-        if (!$(UserInfoItems[k]).hasClass('indent'))
-          break;
+    try {
+      let result = await requests.GET(this.Player.ProfileUrl || profileUrl, {
+        'Cookie': this.Session.UserCookies,
+        'User-Agent': this.Session.UserAgent
+      });
+      this.Player = result.data;
+      this.parser = $.load(result.data);
+      let UserInfoItems = this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item");
+      let HasOldNames = $(UserInfoItems[1]).hasClass('indent');
+      let IdxIncOffset = 0;
+      if (HasOldNames) {
         IdxIncOffset++;
+        for (let k = 1; k < UserInfoItems.length; k++) {
+          if (!$(UserInfoItems[k]).hasClass('indent'))
+            break;
+          IdxIncOffset++;
+        }
       }
+      this.IdxIncOffset = IdxIncOffset;
+      return result.success;
+    } catch (e) {
+      return false;
     }
-    this.IdxIncOffset = IdxIncOffset;
   }
 
   get PointsRanking() {
     try {
+      if (this.Player.PointsRanking)
+        return this.Player.PointsRanking;
       return this.parser("div.sub-headline > div.rank-info > span").text().replace(/[^0-9\-]/g, '');
     } catch (e) {
       return false;
@@ -41,6 +46,8 @@ class DesertPlayer {
 
   get BattlesRanking() {
     try {
+      if (this.Player.BattlesRanking)
+        return this.Player.BattlesRanking;
       return this.parser("div.sub-headline > div.battle-rank-info > span").text().replace(/[^0-9\-]/g, '');
     } catch (e) {
       return false;
@@ -49,6 +56,8 @@ class DesertPlayer {
 
   get Name() {
     try {
+      if (this.Player.PlayerName)
+        return this.Player.PlayerName;
       return this.parser('div.sub-headline > div.user').text().trim();
     } catch (e) {
       return false;
@@ -57,6 +66,8 @@ class DesertPlayer {
 
   get AllyName() {
     try {
+      if (this.Player.AllyName)
+        return this.Player.AllyName;
       return $($(this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item")[this.IdxIncOffset+6])
       .find('span')[1]).find('a').text().trim();
     } catch (e) {
@@ -84,6 +95,8 @@ class DesertPlayer {
 
   get RankPoints() {
     try {
+      if (this.Player.RankPoints)
+        return this.Player.RankPoints;
       return $($(this.parser("#fxc-container > div.content > section.user-info-building-container > section.building-information > div.building-info > div.item")
       .slice(-2)[0]).find('span > span')).attr('data');
     } catch (e) {
@@ -145,6 +158,8 @@ class DesertPlayer {
 
   get IsOnline() {
     try {
+      if (this.Player.IsOnline)
+        return this.Player.IsOnline;
       let StatusDiv = $(this.parser('div.sub-headline > div.user > div')[0]);
       let StatusImg = $(this.parser('div.sub-headline > div.user > img'));
       let New = {
@@ -161,6 +176,8 @@ class DesertPlayer {
 
   get IsBlocked() {
     try {
+      if (this.Player.IsBlocked)
+        return this.Player.IsBlocked;
       let StatusDiv = $(this.parser('div.sub-headline > div.user > div')[0]);
       let StatusImg = $(this.parser('div.sub-headline > div.user > img'));
       let New = {
@@ -177,6 +194,8 @@ class DesertPlayer {
 
   get IsHoliday() {
     try {
+      if (this.Player.IsHoliday)
+        return this.Player.IsHoliday;
       let StatusDiv = $(this.parser('div.sub-headline > div.user > div')[0]);
       let StatusImg = $(this.parser('div.sub-headline > div.user > img'));
       let New = {

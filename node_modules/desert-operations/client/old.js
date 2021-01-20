@@ -9,18 +9,23 @@ class DesertPlayer {
   }
 
   async load(profileUrl) {
-    let result = await requests.GET(this.Player.ProfileUrl || profileUrl, {
-      'Cookie': this.Session.UserCookies,
-      'User-Agent': this.Session.UserAgent
-    });
-    if (!result.success)
-      throw new Error('Failed to get user data.');
-    this.Player = result.data;
-    this.parser = $.load(result.data);
+    try {
+      let result = await requests.GET(this.Player.ProfileUrl || profileUrl, {
+        'Cookie': this.Session.UserCookies,
+        'User-Agent': this.Session.UserAgent
+      });
+      this.Player = result.data;
+      this.parser = $.load(result.data);
+      return result.success;
+    } catch (e) {
+      return false;
+    }
   }
 
   get PointsRanking() {
     try {
+      if (this.Player.PointsRanking)
+        return this.Player.PointsRanking;
       return this.parser("#hsRanks > h1").text().replace(/[^0-9\-]/g, '');
     } catch (e) {
       return false;
@@ -29,6 +34,8 @@ class DesertPlayer {
 
   get BattlesRanking() {
     try {
+      if (this.Player.BattlesRanking)
+        return this.Player.BattlesRanking;
       return this.parser("#hsRanks > h2").text().replace(/[^0-9\-]/g, '');
     } catch (e) {
       return false;
@@ -37,6 +44,8 @@ class DesertPlayer {
 
   get Name() {
     try {
+      if (this.Player.PlayerName)
+        return this.Player.PlayerName;
       return this.parser('h1.main.blockHead').text().trim();
     } catch (e) {
       return false;
@@ -45,6 +54,8 @@ class DesertPlayer {
 
   get AllyName() {
     try {
+      if (this.Player.AllyName)
+        return this.Player.AllyName;
       return $($(this.parser("table.userDetails > tbody > tr")[9])
         .find('td')[1]).text().trim();
     } catch (e) {
@@ -73,6 +84,8 @@ class DesertPlayer {
 
   get RankPoints() {
     try {
+      if (this.Player.AllyName)
+        return this.Player.AllyName;
       let table = this.parser("table.userDetails > tbody > tr");
       let rankSection = table[table.length - 2];
       return this.parser(this.parser(rankSection).find('td > span')[0]).attr('data');
@@ -135,6 +148,8 @@ class DesertPlayer {
 
   get IsOnline() {
     try {
+      if (this.Player.IsOnline)
+        return this.Player.IsOnline;
       let img = this.parser('h1.main.blockHead > img');
       return (img.length > 0 ? img.attr('src').includes('bullet_green.png') : false);
     } catch (e) {
@@ -144,6 +159,8 @@ class DesertPlayer {
 
   get IsBlocked() {
     try {
+      if (this.Player.IsBlocked)
+        return this.Player.IsBlocked;
       let img = this.parser('h1.main.blockHead > img');
       return (img.length > 0 ? img.attr('src').includes('lock.png') : false);
     } catch (e) {
@@ -153,6 +170,8 @@ class DesertPlayer {
 
   get IsHoliday() {
     try {
+      if (this.Player.IsHoliday)
+        return this.Player.IsHoliday;
       let img = this.parser('h1.main.blockHead > img');
       return (img.length > 0 ? img.attr('src').includes('weather_sun.png') : false);
     } catch (e) {
