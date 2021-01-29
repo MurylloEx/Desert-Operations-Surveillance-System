@@ -1,0 +1,24 @@
+(*) Se o alvo foi atacado e perdeu pelo menos uma batalha, o alvo está vulnerável. 
+(*) Se o alvo ganhou pelo menos uma batalha, ele não está vulnerável.
+(*) Se as batalhas ocorreram posteriormente ao seu último acesso, então, o alvo está vulnerável. 
+(+) O alvo foi atacado enquanto estava offline. A batalha foi mal sucedida. Portanto, o alvo não ganhou nenhuma batalha e está vulnerável.
+
+A: o alvo foi atacado
+B: perdeu pelo menos uma batalha
+C: o alvo está vulnerável
+D: o alvo ganhou pelo menos uma batalha
+~C: ele não está vulnerável
+E: as batalhas ocorreram posteriormente ao seu último acesso
+
+1. A ^ B -> C
+2. D -> ~C
+3. E -> C
+
+
+4. A ^ E ^ B -> ~D ^ C
+(A ^ B) ^ E -> ~D ^ C
+C ^ E -> ~D ^ C
+C ^ C -> ~D ^ C
+C ^ C -> ~(~C) ^ C
+C -> C
+

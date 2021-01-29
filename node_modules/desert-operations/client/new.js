@@ -28,6 +28,7 @@ class DesertPlayer {
         }
       }
       this.IdxIncOffset = IdxIncOffset;
+      this.EdxIncOffset = (new RegExp(/\d{1,2}\.\d{1,2}\.\d{2,4}/g)).test($($(UserInfoItems[IdxIncOffset+2]).find('span')[1]).text().trim()) ? 1 : 0;
       return result.success;
     } catch (e) {
       return false;
@@ -68,7 +69,7 @@ class DesertPlayer {
     try {
       if (this.Player.AllyName)
         return this.Player.AllyName;
-      return $($(this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item")[this.IdxIncOffset+6])
+      return $($(this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item")[this.IdxIncOffset+this.EdxIncOffset+6])
       .find('span')[1]).find('a').text().trim();
     } catch (e) {
       return false;
@@ -77,7 +78,7 @@ class DesertPlayer {
 
   get Email() {
     try {
-      return $($(this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item")[this.IdxIncOffset+4])
+      return $($(this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item")[this.IdxIncOffset+this.EdxIncOffset+4])
       .find('span')[1]).find('a').attr('href').replace('mailto:', '').trim();
     } catch (e) {
       return false;
@@ -124,7 +125,7 @@ class DesertPlayer {
 
   get WonBattles() {
     try {
-      return $($(this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item")[this.IdxIncOffset+2])
+      return $($(this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item")[this.IdxIncOffset+this.EdxIncOffset+2])
       .find('span')[1]).text().trim().split(' ')[0];
     } catch (e) {
       return false;
@@ -133,7 +134,7 @@ class DesertPlayer {
 
   get LostBattles() {
     try {
-      return $($(this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item")[this.IdxIncOffset+3])
+      return $($(this.parser("#fxc-container > div.content section.user-info-building-container > section.user-information > div.user-info > div.item")[this.IdxIncOffset+this.EdxIncOffset+3])
       .find('span')[1]).text().trim().split(' ')[0];
     } catch (e) {
       return false;
